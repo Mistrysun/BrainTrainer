@@ -30,3 +30,7 @@
 |         |            | - App Logo has been added to first Constraint                                     |
 |         |            | - Buttons are disabled once timer has ended                                       |
 +---------+------------+-----------------------------------------------------------------------------------+
+| 2.1     | 14/02/2019 | - Minor fix to sumTextView                                                        |
+|         |            | - Issue: Some calculations would overlap on scoreTextView                         |
+|         |            | - Fixed via setting the constraints between the timer and score                   |
++---------+------------+-----------------------------------------------------------------------------------+
