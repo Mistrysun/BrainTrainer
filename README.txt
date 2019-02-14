@@ -34,3 +34,6 @@
 |         |            | - Issue: Some calculations would overlap on scoreTextView                         |
 |         |            | - Fixed via setting the constraints between the timer and score                   |
 +---------+------------+-----------------------------------------------------------------------------------+
+| 2.2     | 14/02/2019 | - GUI fixes                                                                       |
+|         |            | - orientation fixed in AndroidManifest.XML                                        |
++---------+------------+-----------------------------------------------------------------------------------+
