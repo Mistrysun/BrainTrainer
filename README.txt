@@ -23,3 +23,10 @@
 +---------+------------+-----------------------------------------------------------------------------------+
 | 1.0     | 13/02/2019 | - App now works functionally                                                      |
 +---------+------------+-----------------------------------------------------------------------------------+
+| 2.0     | 14/02/2019 | - App work functionally with timer                                                |
+|         |            | - Play Again button and function implemented                                      |
+|         |            | - Minor bug fixes                                                                 |
+|         |            | - AppIcon has been inserted                                                       |
+|         |            | - App Logo has been added to first Constraint                                     |
+|         |            | - Buttons are disabled once timer has ended                                       |
++---------+------------+-----------------------------------------------------------------------------------+

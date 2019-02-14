@@ -1,11 +1,13 @@
 package com.example.android.braintrainer;
 
 import android.os.CountDownTimer;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,10 +28,57 @@ public class MainActivity extends AppCompatActivity {
     Button button3;
     TextView sumTextView;
     TextView timerTextView;
-
+    Button playAgainButton;
     Button goButton;
+    ConstraintLayout gameLayout;
+    ImageView splashImageView;
+
+
     TextView resultTextView;
     ArrayList<Integer> answers = new ArrayList<Integer>();
+
+    public void ButtonsEnabled() {
+        button0.setEnabled(true);
+        button1.setEnabled(true);
+        button2.setEnabled(true);
+        button3.setEnabled(true);
+    }
+
+    public void ButtonsDisabled() {
+        button0.setEnabled(false);
+        button1.setEnabled(false);
+        button2.setEnabled(false);
+        button3.setEnabled(false);
+    }
+
+    public void TimerCountDown () {
+        new CountDownTimer(30100, 1000) {
+
+            @Override
+            public void onTick(long l) {
+                timerTextView.setText(String.valueOf(l /1000) + "s");
+            }
+
+            @Override
+            public void onFinish() {
+                ButtonsDisabled();
+                resultTextView.setText("Done");
+                playAgainButton.setVisibility(View.VISIBLE);
+            }
+        }.start();
+    }
+
+    public void playAgain(View view) {
+        playAgainButton.setVisibility(View.INVISIBLE);
+        newQuestion();
+        score = 0;
+        numberOfQuestions = 0;
+        scoreTextView.setText(Integer.toString(score)+ "/" + Integer.toString(numberOfQuestions));
+        timerTextView.setText("30s");
+        resultTextView.setText("");
+        ButtonsEnabled();
+        TimerCountDown();
+    }
 
     public void chooseAnswer(View view) {
 
@@ -47,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void Start(View view) {
         goButton.setVisibility(View.INVISIBLE);
+        splashImageView.setVisibility(View.INVISIBLE);
+        ButtonsEnabled();
+        gameLayout.setVisibility(View.VISIBLE);
     }
 
     public void newQuestion() {
@@ -98,20 +150,16 @@ public class MainActivity extends AppCompatActivity {
         button3 = findViewById(R.id.button3);
         goButton = findViewById(R.id.goButton);
         timerTextView = findViewById(R.id.timerTextView);
+        playAgainButton = findViewById(R.id.playAgainButton);
+        gameLayout = findViewById(R.id.gameLayout);
+        splashImageView = findViewById(R.id.splashImageView);
+
+        goButton.setVisibility(View.VISIBLE);
+        splashImageView.setVisibility(View.VISIBLE);
+        gameLayout.setVisibility(View.INVISIBLE);
 
         newQuestion();
+        TimerCountDown();
 
-        new CountDownTimer(30100, 1000) {
-
-            @Override
-            public void onTick(long l) {
-                timerTextView.setText(String.valueOf(l /1000) + "s");
-            }
-
-            @Override
-            public void onFinish() {
-                resultTextView.setText("Done");
-            }
-        }.start();
     }
 }
